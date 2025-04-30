@@ -10,16 +10,41 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            flex-direction: column;
+            gap: 20px;
             background-color: #f4f4f4;
         }
         img {
             max-width: 80%;
             height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        img.zoomed {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2); /* Center and zoom */
+            z-index: 1001;
         }
     </style>
+    <script>
+        function toggleZoom(event) {
+            const image = event.target;
+            const isZoomed = image.classList.contains('zoomed');
+            if (isZoomed) {
+                document.body.style.overflow = ''; // Enable scrolling
+            } else {
+                document.body.style.overflow = 'hidden'; // Disable scrolling
+            }
+            image.classList.toggle('zoomed');
+        }
+    </script>
 </head>
 <body>
-    <img src="{{ url_for('static', filename='images/meme.jpg') }}" alt="Meme">
+    <h1>Story</h1>
+    <img src="{{ url_for('static', filename='images/meme.jpg') }}" alt="Meme 1" onclick="toggleZoom(event)">
+    <img src="{{ url_for('static', filename='images/meme2.jpg') }}" alt="Meme 2" onclick="toggleZoom(event)">
+    <img src="{{ url_for('static', filename='images/meme3.jpg') }}" alt="Meme 3" onclick="toggleZoom(event)">
 </body>
 </html>
