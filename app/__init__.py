@@ -14,5 +14,16 @@ def create_app():
     @app.route("/story")
     def story():
         return render_template("story.html")
+    
+    @app.route('/wishes')
+    def wishes():
+        return render_template('wishes.html')
 
+    @app.route('/plans')
+    def plans():
+        return render_template('plans.html')
+
+    @app.route('/ps')
+    def ps():
+        return render_template('ps.html')
     return app

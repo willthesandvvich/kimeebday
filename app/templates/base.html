@@ -105,13 +105,14 @@
             border: none;
         }
     </style>
+    <script src="{{ url_for('static', filename='js/heart_cursor.js') }}"></script>
 </head>
 <body>
     <div class="menu-bar">
-        <a href="/story">Story</a>
-        <a href="#wishes">Wishes</a>
-        <a href="#plans">Plans</a>
-        <a href="#ps">P.S</a>
+        <a href="{{ url_for('story') }}">Story</a>
+        <a href="{{ url_for('wishes') }}">Wishes</a>
+        <a href="{{ url_for('plans') }}">Plans</a>
+        <a href="{{ url_for('ps') }}">P.S</a>
     </div>
     <div class="title">Jim & Jude</div>
     <div class="media-frame">
