@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #000; /* Changed to black */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -16,19 +16,6 @@
             height: 100vh;
             position: relative;
             overflow: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWNtdmUwanAwbTJ3aTl6dnY3ZGdidGZvcnU5a2Nkc3Ixcm0xNm41MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lPoOHG39XAlV4it61H/giphy.gif') center/cover no-repeat;
-            z-index: -1;
-            opacity: 0.5;
-            pointer-events: none;
         }
 
         .menu-bar {
@@ -57,37 +44,33 @@
             margin-top: 100px; /* Space below the menu bar */
             text-align: center;
             color: #333;
-            animation: pulse-rotate 2s infinite;
             position: relative;
+            animation: zoom-color 2s infinite; /* Reduced animation duration */
         }
 
-        @keyframes pulse-rotate {
+        @keyframes zoom-color {
             0% {
-                transform: scale(1) rotate(0deg);
-                color: #ff69b4;
-                text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff4500;
+                transform: scale(1);
+                color:rgba(148, 255, 105, 0.97);
             }
-            25% {
-                transform: scale(1.1) rotate(10deg);
+            20% {
+                transform: scale(1.2);
+                color:rgb(120, 105, 255);
+            }
+            40% {
+                transform: scale(1.4);
+                color:rgb(108, 105, 255);
+            }
+            60% {
+                transform: scale(1.6);
                 color: #ff4500;
-                text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6347, 0 0 30px #ffa07a;
-            }
-            50% {
-                transform: scale(1.2) rotate(-10deg);
-                color: #ffa07a;
-                text-shadow: 0 0 15px #ffa07a, 0 0 25px #ff69b4, 0 0 35px #ff1493;
-            }
-            75% {
-                transform: scale(1.1) rotate(10deg);
-                color: #ff6347;
-                text-shadow: 0 0 10px #ff6347, 0 0 20px #ff4500, 0 0 30px #ff1493;
             }
             100% {
-                transform: scale(1) rotate(0deg);
-                color: #ff69b4;
-                text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff4500;
+                transform: scale(1);
+                color:rgb(253, 255, 105);
             }
         }
+
         .media-frame {
             margin-top: 20px;
             width: 80%;
@@ -106,6 +89,13 @@
         }
     </style>
     <script src="{{ url_for('static', filename='js/heart_cursor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/confetti.js') }}"></script>
+    <script>
+        // Start confetti animation when the page loads
+        window.onload = function() {
+            confetti.start();
+        };
+    </script>
 </head>
 <body>
     <div class="menu-bar">
@@ -114,10 +104,9 @@
         <a href="{{ url_for('plans') }}">Plans</a>
         <a href="{{ url_for('ps') }}">P.S</a>
     </div>
-    <div class="title">Jim & Jude</div>
+    <div class="title">Happy Birthday<br>Vợ Yêu</div>
     <div class="media-frame">
-        <!-- Replace the src with your media source (e.g., YouTube video, image, etc.) -->
-        <iframe src="{{ url_for('static', filename='images/giphy.gif') }}" allowfullscreen></iframe>
+        <img src="{{ url_for('static', filename='images/giphy.gif') }}" alt="GIF" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
     </div>
 </body>
 </html>
