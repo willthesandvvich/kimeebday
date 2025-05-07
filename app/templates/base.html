@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Website</title>
+    <title>HPBD Wifey Kimee</title>
     <style>
         body {
             margin: 0;
@@ -41,11 +41,13 @@
         .title {
             font-size: 3rem;
             font-weight: bold;
-            margin-top: 100px; /* Space below the menu bar */
+            margin-top: 30px; /* Moved up by 20 pixels */
             text-align: center;
             color: #333;
             position: relative;
             animation: zoom-color 2s infinite; /* Reduced animation duration */
+            font-family: "Comic Sans MS", cursive, sans-serif; /* Changed font */
+            font-style: italic; /* Make text italic */
         }
 
         @keyframes zoom-color {
@@ -54,19 +56,19 @@
                 color:rgba(148, 255, 105, 0.97);
             }
             20% {
-                transform: scale(1.2);
+                transform: scale(1.1);
                 color:rgb(120, 105, 255);
             }
             40% {
-                transform: scale(1.4);
+                transform: scale(1.2);
                 color:rgb(108, 105, 255);
             }
             60% {
-                transform: scale(1.6);
+                transform: scale(1.3);
                 color: #ff4500;
             }
             100% {
-                transform: scale(1);
+                transform: scale(1.4);
                 color:rgb(253, 255, 105);
             }
         }
@@ -87,25 +89,87 @@
             object-fit: cover; /* Ensures the GIF fills the frame */
             border: none;
         }
+        .hidden {
+            display: none;
+        }
+        .press-me-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .press-me-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
     <script src="{{ url_for('static', filename='js/heart_cursor.js') }}"></script>
     <script src="{{ url_for('static', filename='js/confetti.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/starbg.js') }}"></script> <!-- Include starbg.js -->
     <script>
-        // Start confetti animation when the page loads
+        let pressCount = 0;
+
+        function getRandomPosition() {
+            const x = Math.random() * (window.innerWidth - 100); // Adjust for button width
+            const y = Math.random() * (window.innerHeight - 50); // Adjust for button height
+            return { x, y };
+        }
+
+        // Initialize the draw function when the page loads
         window.onload = function() {
-            confetti.start();
+            confetti.stop(); // Stop confetti initially
+            draw(); // Start the starfield animation
         };
+
+        function showContent() {
+            pressCount++;
+            if (pressCount < 4) {
+                const { x, y } = getRandomPosition();
+                const button = document.querySelector('.press-me-btn');
+                button.style.position = 'absolute';
+                button.style.left = `${x}px`;
+                button.style.top = `${y}px`;
+                if (pressCount === 1) {
+                    button.textContent = "hehe try again!"; // Change button text
+                }
+                else if (pressCount === 2) {
+                    button.textContent = "Almost there!"; // Change button text
+                } 
+                else {
+                    button.textContent = "Last one I promise!";
+                }
+            } else {
+                const button = document.querySelector('.press-me-btn');
+                button.style.position = 'absolute';
+                button.style.left = '50%';
+                button.style.top = '10%'; // Move above the 
+                button.style.transform = 'translate(-50%, -50%)';
+                button.textContent = "Surpriseee!!!"; // Change button text
+                document.querySelector('.title').classList.remove('hidden');
+                document.querySelector('.media-frame').classList.remove('hidden');
+                document.querySelector('.menu-bar').classList.remove('hidden');
+                confetti.start(); // Start confetti after button press
+            }
+        }
     </script>
 </head>
 <body>
-    <div class="menu-bar">
+    <canvas id="starfield" style="position: absolute; top: 0; left: 0; z-index: -1;"></canvas> <!-- Add canvas -->
+    <div class="menu-bar hidden">
         <a href="{{ url_for('story') }}">Story</a>
         <a href="{{ url_for('wishes') }}">Wishes</a>
         <a href="{{ url_for('plans') }}">Plans</a>
         <a href="{{ url_for('ps') }}">P.S</a>
+        <a href="{{ url_for('sweet') }}">Sweet</a>
     </div>
-    <div class="title">Happy Birthday<br>Vợ Yêu</div>
-    <div class="media-frame">
+    <button class="press-me-btn" onclick="showContent()">Press Me</button>
+    <div class="title hidden">Happy 23rd Birthday<br>Wifey Kimee</div>
+    <div class="media-frame hidden">
         <img src="{{ url_for('static', filename='images/giphy.gif') }}" alt="GIF" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
     </div>
 </body>
