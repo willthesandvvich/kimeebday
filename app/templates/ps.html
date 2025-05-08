@@ -3,62 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.S</title>
+    <title>Sweet</title>
     <style>
         body {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-            background-color: #f4f4f4;
-        }
-        img {
-            max-width: 80%;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        img.zoomed {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(2); /* Center and zoom */
-            z-index: 1001;
+            overflow: hidden;
+            background-color: black;
         }
         canvas {
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     </style>
-    <script>
-        function toggleZoom(event) {
-            const image = event.target;
-            const isZoomed = image.classList.contains('zoomed');
-            if (isZoomed) {
-                document.body.style.overflow = ''; // Enable scrolling
-            } else {
-                document.body.style.overflow = 'hidden'; // Disable scrolling
-            }
-            image.classList.toggle('zoomed');
-        }
-    </script>
 </head>
 <body>
-    <h1>P.S</h1>
-    <img src="{{ url_for('static', filename='images/ps1.jpg') }}" alt="P.S 1" onclick="toggleZoom(event)">
-    <img src="{{ url_for('static', filename='images/ps2.jpg') }}" alt="P.S 2" onclick="toggleZoom(event)">
-    <img src="{{ url_for('static', filename='images/ps3.jpg') }}" alt="P.S 3" onclick="toggleZoom(event)">
-    <textarea placeholder="Write your thoughts here..." style="width: 80%; height: 200px; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
-    <canvas id="heartCanvas" width="400" height="400"></canvas>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <script>
-        const canvas = document.getElementById('heartCanvas');
-        const ctx = canvas.getContext('2d');
-
-        // Call the drawHeart function to draw a heart on the canvas
-        drawHeart(200, 150, 0, 0, 100, 150, 'red');
-    </script>
+    <canvas id="starfield"></canvas>
+    <button id="valentinesButton" style="position: absolute; top: 20px; left: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Click Me! ❤</button>
+    <script src="{{ url_for('static', filename='js/starbg.js') }}"></script>
 </body>
 </html>

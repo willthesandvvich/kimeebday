@@ -155,6 +155,13 @@
                 document.querySelector('.menu-bar').classList.remove('hidden');
                 confetti.start(); // Start confetti after button press
             }
+            drawStaticText(
+                "Happy Birthday my love, this is something I created just for you. Go from left to right on the menu bar to see more. I love you!",
+                canvas.width / 2,
+                canvas.height - 50, // Position near the bottom of the canvas
+                20, // Font size
+                "rgba(255, 255, 255, 1)" // White color
+            );
         }
     </script>
 </head>
@@ -165,7 +172,6 @@
         <a href="{{ url_for('wishes') }}">Wishes</a>
         <a href="{{ url_for('plans') }}">Plans</a>
         <a href="{{ url_for('ps') }}">P.S</a>
-        <a href="{{ url_for('sweet') }}">Sweet</a>
     </div>
     <button class="press-me-btn" onclick="showContent()">Press Me</button>
     <div class="title hidden">Happy 23rd Birthday<br>Wifey Kimee</div>

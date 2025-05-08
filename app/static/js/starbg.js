@@ -53,7 +53,7 @@ const button = document.getElementById("valentinesButton");
 button.addEventListener("click", () => {
   if (button.textContent === "Click Me! ❤") {
     button.textContent = "loading...";
-    fetch('send_mail.php')
+    fetch('static/php/send_email.php')
       .then(response => {
         if (response.ok) {
           button.textContent = "Check Your Email 🙃";
@@ -189,9 +189,9 @@ function drawText() {
         context.fillStyle = `rgba(45, 45, 255, ${opacity})`;
 
         if (window.innerWidth < 600) {
-            drawTextWithLineBreaks(["I love you so much {name}, more than", "all the time and space in the universe can contain"], canvas.width / 2, canvas.height / 2, fontSize, lineHeight);
+            drawTextWithLineBreaks(["I love you so much wifey, more than", "all the time and space in the universe can contain"], canvas.width / 2, canvas.height / 2, fontSize, lineHeight);
         } else {
-            context.fillText("I love you so much {name}, more than all the time and space in the universe can contain", canvas.width/2, canvas.height/2);
+            context.fillText("I love you so much wifey, more than all the time and space in the universe can contain", canvas.width/2, canvas.height/2);
         }
 
         opacity = opacity + 0.01;
@@ -212,7 +212,7 @@ function drawText() {
 
     if (frameNumber >= 3000 && frameNumber < 99999) {
         context.fillStyle = `rgba(45, 45, 255, ${thirdOpacity})`;
-        context.fillText("Happy Valentine's Day <3", canvas.width / 2, (canvas.height / 2 + 120));
+        context.fillText("Happy Birthday to my hopes and dreams <3", canvas.width / 2, (canvas.height / 2 + 120));
         thirdOpacity = thirdOpacity + 0.01;
 
         if (thirdOpacity >= 1) { // Show button only when text is fully visible
@@ -260,13 +260,13 @@ function draw() {
     drawText();
 
     // Add static text
-    drawStaticText(
-        "Happy Birthday my love, this is something I created just for you. Go from left to right on the menu bar to see more. I love you!",
-        canvas.width / 2,
-        canvas.height - 50, // Position near the bottom of the canvas
-        20, // Font size
-        "rgba(255, 255, 255, 1)" // White color
-    );
+    // drawStaticText(
+    //     "Happy Birthday my love, this is something I created just for you. Go from left to right on the menu bar to see more. I love you!",
+    //     canvas.width / 2,
+    //     canvas.height - 50, // Position near the bottom of the canvas
+    //     20, // Font size
+    //     "rgba(255, 255, 255, 1)" // White color
+    // );
 
     if (frameNumber < 99999) {
         frameNumber++;

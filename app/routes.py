@@ -21,7 +21,3 @@ def plans():
 @app.route('/ps')
 def ps():
     return render_template('ps.html')
-
-@app.route('/sweet')
-def sweet():
-    return render_template('sweet.html')

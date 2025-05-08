@@ -1,50 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plans</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-            background-color: #f4f4f4;
-        }
-        img {
-            max-width: 80%;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        img.zoomed {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(2); /* Center and zoom */
-            z-index: 1001;
-        }
-    </style>
-    <script>
-        function toggleZoom(event) {
-            const image = event.target;
-            const isZoomed = image.classList.contains('zoomed');
-            if (isZoomed) {
-                document.body.style.overflow = ''; // Enable scrolling
-            } else {
-                document.body.style.overflow = 'hidden'; // Disable scrolling
-            }
-            image.classList.toggle('zoomed');
-        }
-    </script>
+    <title>Invitation</title>
+    <link rel="stylesheet" href="static/css/invi.css">
 </head>
 <body>
-    <h1>Plans</h1>
-    <img src="{{ url_for('static', filename='images/meme2.jpg') }}" alt="Meme 2" onclick="toggleZoom(event)">
-    <img src="{{ url_for('static', filename='images/plan2.jpg') }}" alt="Plan 2" onclick="toggleZoom(event)">
-    <img src="{{ url_for('static', filename='images/plan3.jpg') }}" alt="Plan 3" onclick="toggleZoom(event)">
+
+    <div class="container">
+        <h1>An Invitation for your <br> ~~~ Birthday Dinner ~~~</h1>
+        <p>I know you have been wanting to get omakase. <br> So, for your special day, we are getting it!</p>
+        <p>Date: <strong><span class="underline">11/05/2025</span></strong></p>
+        <p>Time: <strong><span class="underline">19:45</span></strong></p>
+        <p>Location: <strong><span class="underline">Chisai Sushi Club in SF</span></strong></p>
+        <p>Transportation: <strong><span class="underline">Your personal driver (me)</span></strong></p>
+    </div>
+    <div class="video-container">
+    <video id="background-video" autoplay loop muted>
+        <source src="static/videos/bginvi.mp4" type="video/mp4">
+        <!-- Add other video source types if needed (WebM, Ogg) -->
+    </video>
+    </div>
 </body>
 </html>

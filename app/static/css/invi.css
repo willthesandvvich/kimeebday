@@ -1,0 +1,138 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background: #000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    animation: fadeIncontainer 2s ease-in;
+    background: rgba(255, 255, 255, 0.3); /* Set transparency */
+    max-width: 1000px;
+    width: 90%; /* Adjust as needed */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0); /* Set transparency */
+    padding: 40px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the container is on top of the video */
+    
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIncontainer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #000000;
+    font-size: 3rem;
+    margin: 0 0 20px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: bold;
+    animation: neonGlow 1.5s linear infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 10px #fcfcfc, 0 0 20px #ffffff;
+    }
+    100% {
+        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff;
+    }
+}
+
+h1::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #000000;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+}
+
+h1:hover::before {
+    transform: scaleX(1);
+}
+
+p {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place the video behind the container */
+}
+
+#background-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 2s ease-in;
+}
+
+@font-face {
+    font-family: 'Dancing Script'; /* Your chosen font name */
+    src: url('../fonts/DancingScript-Regular.ttf') format('woff2'),
+         url('fonts/DancingScript-Regular.tff') format('woff');
+    /* Add other font formats if available */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alex Brush'; /* Your chosen font name */
+    src: url('../fonts/AlexBrush-Regular.ttf') format('woff2'),
+         url('../fonts/AlexBrush-Regular.ttf') format('woff');
+    /* Add other font formats if available */
+    font-weight: normal;
+    font-style: normal;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-color: rgb(0, 0, 0);
+    text-underline-offset: 0.2em; /* Adjust this value as needed */
+}
+
+p {
+    font-family: 'Alex Brush', cursive; /* Specify the font family */
+    font-size: 40px;
+    color: #000;
+}
